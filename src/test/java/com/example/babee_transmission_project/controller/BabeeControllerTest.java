@@ -50,9 +50,9 @@ class BabeeControllerTest {
 
         mockMvc.perform(get("/babee"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].nom").value("Toto"))
-                .andExpect(jsonPath("$[0].prenom").value("Titi"))
-                .andExpect(jsonPath("$[0].dateNaissance").value("2025-01-01")
+                .andExpect(jsonPath("$[0].lastName").value("Toto"))
+                .andExpect(jsonPath("$[0].firstName").value("Titi"))
+                .andExpect(jsonPath("$[0].birthDate").value("2025-01-01")
                 );
 
         verify(babeeService).getBabees();
@@ -72,9 +72,9 @@ class BabeeControllerTest {
 
         mockMvc.perform(get("/babee/{id}", id))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nom").value("Toto"))
-                .andExpect(jsonPath("$.prenom").value("Titi"))
-                .andExpect(jsonPath("$.dateNaissance").value("2025-01-01")
+                .andExpect(jsonPath("$.lastName").value("Toto"))
+                .andExpect(jsonPath("$.firstName").value("Titi"))
+                .andExpect(jsonPath("$.birthDate").value("2025-01-01")
                 );
 
         verify(babeeService).getBabeeById(id);
@@ -101,9 +101,9 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nom").value("Toto"))
-                .andExpect(jsonPath("$.prenom").value("Titi"))
-                .andExpect(jsonPath("$.dateNaissance").value("2025-01-01")
+                .andExpect(jsonPath("$.lastName").value("Toto"))
+                .andExpect(jsonPath("$.firstName").value("Titi"))
+                .andExpect(jsonPath("$.birthDate").value("2025-01-01")
                 );
 
         verify(babeeService).saveBabee(any());
@@ -120,7 +120,7 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.nom").value("must not be null"));
+                .andExpect(jsonPath("$.lastName").value("must not be null"));
     }
 
     @Test
@@ -134,7 +134,7 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.prenom").value("must not be null"));
+                .andExpect(jsonPath("$.firstName").value("must not be null"));
     }
 
     @Test
@@ -148,7 +148,7 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.dateNaissance").value("must not be null"));
+                .andExpect(jsonPath("$.birthDate").value("must not be null"));
     }
 
 
@@ -174,9 +174,9 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nom").value("Toto"))
-                .andExpect(jsonPath("$.prenom").value("Titi"))
-                .andExpect(jsonPath("$.dateNaissance").value("2025-01-01"));
+                .andExpect(jsonPath("$.lastName").value("Toto"))
+                .andExpect(jsonPath("$.firstName").value("Titi"))
+                .andExpect(jsonPath("$.birthDate").value("2025-01-01"));
 
         verify(babeeService).updateBabee(eq(id), any());
     }
@@ -193,7 +193,7 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.nom").value("must not be null"));
+                .andExpect(jsonPath("$.lastName").value("must not be null"));
     }
 
     @Test
@@ -208,7 +208,7 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.prenom").value("must not be null"));
+                .andExpect(jsonPath("$.firstName").value("must not be null"));
     }
 
     @Test
@@ -223,7 +223,7 @@ class BabeeControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.dateNaissance").value("must not be null"));
+                .andExpect(jsonPath("$.birthDate").value("must not be null"));
     }
 
     @Test

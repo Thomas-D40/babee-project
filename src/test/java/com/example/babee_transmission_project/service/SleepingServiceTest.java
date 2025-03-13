@@ -63,8 +63,8 @@ class SleepingServiceTest {
                 .id(sleepingId)
                 .babeeId(babeeId)
                 .eventDate(eventDate)
-                .begin(Time.valueOf("06:30:00"))
-                .end(Time.valueOf("07:15:00"))
+                .beginHour(Time.valueOf("06:30:00"))
+                .endHour(Time.valueOf("07:15:00"))
                 .build();
 
         sleepingInputResource = SleepingInputResource.builder()

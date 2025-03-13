@@ -43,7 +43,7 @@ class CareActControllerTest {
                 .eventDate(LocalDate.now())
                 .careActType(1)
                 .careActDetail(2)
-                .commentaire("Test commentaire")
+                .comment("Test commentaire")
                 .build();
 
         when(careActService.getCareActs(any(), any())).thenReturn(List.of(careAct));
@@ -54,7 +54,7 @@ class CareActControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].careActType").value(1))
                 .andExpect(jsonPath("$[0].careActDetail").value(2))
-                .andExpect(jsonPath("$[0].commentaire").value("Test commentaire"));
+                .andExpect(jsonPath("$[0].comment").value("Test commentaire"));
 
         verify(careActService).getCareActs(any(), any());
     }
@@ -68,7 +68,7 @@ class CareActControllerTest {
                 .eventDate(LocalDate.now())
                 .careActType(1)
                 .careActDetail(2)
-                .commentaire("Test Commentaire")
+                .comment("Test Commentaire")
                 .build();
 
         when(careActService.getCareActById(id)).thenReturn(careAct);
@@ -77,7 +77,7 @@ class CareActControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.careActType").value(1))
                 .andExpect(jsonPath("$.careActDetail").value(2))
-                .andExpect(jsonPath("$.commentaire").value("Test Commentaire"));
+                .andExpect(jsonPath("$.comment").value("Test Commentaire"));
 
         verify(careActService).getCareActById(id);
     }
@@ -98,7 +98,7 @@ class CareActControllerTest {
                 .eventDate(input.getEventDate())
                 .careActType(input.getCareActType())
                 .careActDetail(input.getCareActDetail())
-                .commentaire(input.getComment())
+                .comment(input.getComment())
                 .build();
 
         when(careActService.saveCareAct(any())).thenReturn(saved);
@@ -109,7 +109,7 @@ class CareActControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.careActType").value(1))
                 .andExpect(jsonPath("$.careActDetail").value(2))
-                .andExpect(jsonPath("$.commentaire").value("New Comment"));
+                .andExpect(jsonPath("$.comment").value("New Comment"));
 
         verify(careActService).saveCareAct(any());
     }
@@ -179,7 +179,7 @@ class CareActControllerTest {
                 .eventDate(input.getEventDate())
                 .careActType(input.getCareActType())
                 .careActDetail(input.getCareActDetail())
-                .commentaire(input.getComment())
+                .comment(input.getComment())
                 .build();
 
         when(careActService.updateCareAct(eq(id), any())).thenReturn(updated);
@@ -190,7 +190,7 @@ class CareActControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.careActType").value(1))
                 .andExpect(jsonPath("$.careActDetail").value(2))
-                .andExpect(jsonPath("$.commentaire").value("Updated Comment"));
+                .andExpect(jsonPath("$.comment").value("Updated Comment"));
 
         verify(careActService).updateCareAct(eq(id), any());
     }

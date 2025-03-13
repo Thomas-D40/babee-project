@@ -54,7 +54,7 @@ class ActivityControllerTest {
                         .param("day", LocalDate.now().toString()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value("Activity Name"))
-                .andExpect(jsonPath("$[0].commentaire").value("Test commentaire"));
+                .andExpect(jsonPath("$[0].comment").value("Test commentaire"));
 
         verify(activityService).getActivities(any(), any());
     }
@@ -75,7 +75,7 @@ class ActivityControllerTest {
         mockMvc.perform(get("/activity/{id}", id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Test Name"))
-                .andExpect(jsonPath("$.commentaire").value("Test Commentaire"));
+                .andExpect(jsonPath("$.comment").value("Test Commentaire"));
 
         verify(activityService).getActivityById(id);
     }
@@ -104,7 +104,7 @@ class ActivityControllerTest {
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("New Activity"))
-                .andExpect(jsonPath("$.commentaire").value("New Comment"));
+                .andExpect(jsonPath("$.comment").value("New Comment"));
 
         verify(activityService).saveActivity(any());
     }
@@ -179,7 +179,7 @@ class ActivityControllerTest {
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Updated Activity"))
-                .andExpect(jsonPath("$.commentaire").value("Updated Comment"));
+                .andExpect(jsonPath("$.comment").value("Updated Comment"));
 
         verify(activityService).updateActivity(eq(id), any());
     }

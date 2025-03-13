@@ -61,7 +61,7 @@ class InformationServiceTest {
                 .id(informationId)
                 .babeeId(babeeId)
                 .eventDate(eventDate)
-                .commentaire("Test")
+                .comment("Test")
                 .build();
 
         informationInputResource = InformationInputResource.builder()

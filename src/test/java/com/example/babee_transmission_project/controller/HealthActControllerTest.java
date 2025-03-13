@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -85,6 +86,7 @@ class HealthActControllerTest {
                 .eventDate(LocalDate.now())
                 .healthActType(1)
                 .temperature(37)
+                .actHour(Time.valueOf("22:00:00"))
                 .build();
 
         HealthActResource saved = HealthActResource.builder()
@@ -93,6 +95,7 @@ class HealthActControllerTest {
                 .eventDate(input.getEventDate())
                 .healthActType(input.getHealthActType())
                 .temperature(input.getTemperature())
+                .actHour(Time.valueOf("22:00:00"))
                 .build();
 
         when(healthActService.saveHealthAct(any())).thenReturn(saved);
@@ -208,6 +211,7 @@ class HealthActControllerTest {
                 .eventDate(LocalDate.now())
                 .healthActType(1)
                 .temperature(38)
+                .actHour(Time.valueOf("22:00:00"))
                 .build();
 
         HealthActResource updated = HealthActResource.builder()
@@ -216,6 +220,7 @@ class HealthActControllerTest {
                 .eventDate(input.getEventDate())
                 .healthActType(input.getHealthActType())
                 .temperature(input.getTemperature())
+                .actHour(Time.valueOf("22:00:00"))
                 .build();
 
         when(healthActService.updateHealthAct(eq(id), any())).thenReturn(updated);

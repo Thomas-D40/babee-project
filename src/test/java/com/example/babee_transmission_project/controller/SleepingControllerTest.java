@@ -42,8 +42,8 @@ class SleepingControllerTest {
                 .id(UUID.randomUUID())
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .begin(Time.valueOf("22:00:00"))
-                .end(Time.valueOf("23:00:00"))
+                .beginHour(Time.valueOf("22:00:00"))
+                .endHour(Time.valueOf("23:00:00"))
                 .build();
 
         when(sleepingService.getSleepings(any(), any())).thenReturn(List.of(sleeping));
@@ -52,8 +52,8 @@ class SleepingControllerTest {
                         .param("babeeId", UUID.randomUUID().toString())
                         .param("day", LocalDate.now().toString()))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].debut").value("22:00:00"))
-                .andExpect(jsonPath("$[0].fin").value("23:00:00"));
+                .andExpect(jsonPath("$[0].beginHour").value("22:00:00"))
+                .andExpect(jsonPath("$[0].endHour").value("23:00:00"));
 
         verify(sleepingService).getSleepings(any(), any());
     }
@@ -65,16 +65,16 @@ class SleepingControllerTest {
                 .id(id)
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .begin(Time.valueOf("22:00:00"))
-                .end(Time.valueOf("23:00:00"))
+                .beginHour(Time.valueOf("22:00:00"))
+                .endHour(Time.valueOf("23:00:00"))
                 .build();
 
         when(sleepingService.getSleepingById(id)).thenReturn(sleeping);
 
         mockMvc.perform(get("/sleeping/{id}", id))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.debut").value("22:00:00"))
-                .andExpect(jsonPath("$.fin").value("23:00:00"));
+                .andExpect(jsonPath("$.beginHour").value("22:00:00"))
+                .andExpect(jsonPath("$.endHour").value("23:00:00"));
 
         verify(sleepingService).getSleepingById(id);
     }
@@ -92,8 +92,8 @@ class SleepingControllerTest {
                 .id(UUID.randomUUID())
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .begin(input.getBeginHour())
-                .end(input.getEndHour())
+                .beginHour(input.getBeginHour())
+                .endHour(input.getEndHour())
                 .build();
 
         when(sleepingService.saveSleeping(any())).thenReturn(saved);
@@ -102,8 +102,8 @@ class SleepingControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.debut").value("22:00:00"))
-                .andExpect(jsonPath("$.fin").value("23:00:00"));
+                .andExpect(jsonPath("$.beginHour").value("22:00:00"))
+                .andExpect(jsonPath("$.endHour").value("23:00:00"));
 
         verify(sleepingService).saveSleeping(any());
     }
@@ -150,7 +150,7 @@ class SleepingControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.debut").value("Ne peut être null."));
+                .andExpect(jsonPath("$.beginHour").value("Ne peut être null."));
     }
 
     @Test
@@ -165,7 +165,7 @@ class SleepingControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.fin").value("Ne peut être null."));
+                .andExpect(jsonPath("$.endHour").value("Ne peut être null."));
     }
 
     @Test
@@ -181,7 +181,7 @@ class SleepingControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.debut").value("Les temps ne sont pas cohérents"));
+                .andExpect(jsonPath("$.beginHour").value("Les temps ne sont pas cohérents"));
     }
 
     @Test
@@ -198,8 +198,8 @@ class SleepingControllerTest {
                 .id(id)
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .begin(input.getBeginHour())
-                .end(input.getEndHour())
+                .beginHour(input.getBeginHour())
+                .endHour(input.getEndHour())
                 .build();
 
         when(sleepingService.updateSleeping(eq(id), any())).thenReturn(updated);
@@ -208,8 +208,8 @@ class SleepingControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.debut").value("22:00:00"))
-                .andExpect(jsonPath("$.fin").value("23:00:00"));
+                .andExpect(jsonPath("$.beginHour").value("22:00:00"))
+                .andExpect(jsonPath("$.endHour").value("23:00:00"));
 
         verify(sleepingService).updateSleeping(eq(id), any());
     }

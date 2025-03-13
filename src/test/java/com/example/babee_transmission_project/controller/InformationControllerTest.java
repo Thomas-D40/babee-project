@@ -41,7 +41,7 @@ class InformationControllerTest {
                 .id(UUID.randomUUID())
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .commentaire("Information commentaire")
+                .comment("Information commentaire")
                 .build();
 
         when(informationService.getInformations(any(), any())).thenReturn(List.of(information));
@@ -50,7 +50,7 @@ class InformationControllerTest {
                         .param("babeeId", UUID.randomUUID().toString())
                         .param("day", LocalDate.now().toString()))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].commentaire").value("Information commentaire"));
+                .andExpect(jsonPath("$[0].comment").value("Information commentaire"));
 
         verify(informationService).getInformations(any(), any());
     }
@@ -62,14 +62,14 @@ class InformationControllerTest {
                 .id(id)
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .commentaire("Information commentaire")
+                .comment("Information commentaire")
                 .build();
 
         when(informationService.getInformationById(id)).thenReturn(information);
 
         mockMvc.perform(get("/information/{id}", id))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.commentaire").value("Information commentaire"));
+                .andExpect(jsonPath("$.comment").value("Information commentaire"));
 
         verify(informationService).getInformationById(id);
     }
@@ -86,7 +86,7 @@ class InformationControllerTest {
                 .id(UUID.randomUUID())
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .commentaire(input.getComment())
+                .comment(input.getComment())
                 .build();
 
         when(informationService.saveInformation(any())).thenReturn(saved);
@@ -95,7 +95,7 @@ class InformationControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.commentaire").value("Information commentaire"));
+                .andExpect(jsonPath("$.comment").value("Information commentaire"));
 
         verify(informationService).saveInformation(any());
     }
@@ -141,7 +141,7 @@ class InformationControllerTest {
                 .id(id)
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .commentaire(input.getComment())
+                .comment(input.getComment())
                 .build();
 
         when(informationService.updateInformation(eq(id), any())).thenReturn(updated);
@@ -150,7 +150,7 @@ class InformationControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(input)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.commentaire").value("Updated Information commentaire"));
+                .andExpect(jsonPath("$.comment").value("Updated Information commentaire"));
 
         verify(informationService).updateInformation(eq(id), any());
     }
