@@ -13,7 +13,7 @@ public class CareActConverter {
                 .eventDate(careActEntity.getEventDate())
                 .careActType(careActEntity.getCareActType())
                 .careActDetail(careActEntity.getCareActDetail())
-                .commentaire(careActEntity.getCommentaire())
+                .comment(careActEntity.getComment())
                 .build();
     }
 
@@ -23,7 +23,7 @@ public class CareActConverter {
                 .eventDate(careActInputResource.getEventDate())
                 .careActType(careActInputResource.getCareActType())
                 .careActDetail(careActInputResource.getCareActDetail())
-                .commentaire(careActInputResource.getCommentaire())
+                .comment(careActInputResource.getComment())
                 .build();
     }
 }

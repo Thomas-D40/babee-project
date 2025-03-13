@@ -55,23 +55,23 @@ class SleepingServiceTest {
                 .id(sleepingId)
                 .babeeId(babeeId)
                 .eventDate(eventDate)
-                .debut(Time.valueOf("06:30:00"))
-                .fin(Time.valueOf("07:15:00"))
+                .beginHour(Time.valueOf("06:30:00"))
+                .endHour(Time.valueOf("07:15:00"))
                 .build();
 
         sleepingResource = SleepingResource.builder()
                 .id(sleepingId)
                 .babeeId(babeeId)
                 .eventDate(eventDate)
-                .debut(Time.valueOf("06:30:00"))
-                .fin(Time.valueOf("07:15:00"))
+                .begin(Time.valueOf("06:30:00"))
+                .end(Time.valueOf("07:15:00"))
                 .build();
 
         sleepingInputResource = SleepingInputResource.builder()
                 .babeeId(babeeId)
                 .eventDate(eventDate)
-                .debut(Time.valueOf("06:30:00"))
-                .fin(Time.valueOf("07:15:00"))
+                .beginHour(Time.valueOf("06:30:00"))
+                .endHour(Time.valueOf("07:15:00"))
                 .build();
     }
 

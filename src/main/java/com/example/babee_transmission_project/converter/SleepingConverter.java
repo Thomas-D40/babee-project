@@ -11,8 +11,8 @@ public class SleepingConverter {
                 .id(sleepingEntity.getId())
                 .babeeId(sleepingEntity.getBabeeId())
                 .eventDate(sleepingEntity.getEventDate())
-                .debut(sleepingEntity.getDebut())
-                .fin(sleepingEntity.getFin())
+                .beginHour(sleepingEntity.getBeginHour())
+                .endHour(sleepingEntity.getEndHour())
                 .build();
     }
 
@@ -20,8 +20,8 @@ public class SleepingConverter {
         return SleepingEntity.builder()
                 .babeeId(sleepingInputResource.getBabeeId())
                 .eventDate(sleepingInputResource.getEventDate())
-                .debut(sleepingInputResource.getDebut())
-                .fin(sleepingInputResource.getFin())
+                .beginHour(sleepingInputResource.getBeginHour())
+                .endHour(sleepingInputResource.getEndHour())
                 .build();
     }
 }

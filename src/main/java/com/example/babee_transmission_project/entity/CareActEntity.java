@@ -23,5 +23,5 @@ public class CareActEntity extends BaseEntity {
     private UUID id;
     private Integer careActType;
     private Integer careActDetail;
-    private String commentaire;
+    private String comment;
 }

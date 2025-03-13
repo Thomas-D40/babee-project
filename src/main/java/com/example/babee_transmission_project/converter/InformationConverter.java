@@ -11,7 +11,7 @@ public class InformationConverter {
                 .id(informationEntity.getId())
                 .babeeId(informationEntity.getBabeeId())
                 .eventDate(informationEntity.getEventDate())
-                .commentaire(informationEntity.getCommentaire())
+                .comment(informationEntity.getComment())
                 .build();
     }
 
@@ -19,7 +19,7 @@ public class InformationConverter {
         return InformationEntity.builder()
                 .babeeId(informationInputResource.getBabeeId())
                 .eventDate(informationInputResource.getEventDate())
-                .commentaire(informationInputResource.getCommentaire())
+                .comment(informationInputResource.getComment())
                 .build();
     }
 }

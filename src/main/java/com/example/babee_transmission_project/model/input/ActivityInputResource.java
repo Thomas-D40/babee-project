@@ -16,5 +16,5 @@ public class ActivityInputResource {
     private LocalDate eventDate;
     @NotNull
     private String name;
-    private String commentaire;
+    private String comment;
 }

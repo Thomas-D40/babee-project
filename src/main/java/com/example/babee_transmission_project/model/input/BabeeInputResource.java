@@ -10,9 +10,9 @@ import java.time.LocalDate;
 @Builder
 public class BabeeInputResource {
     @NotNull
-    private String nom;
+    private String lastName;
     @NotNull
-    private String prenom;
+    private String firstName;
     @NotNull
-    private LocalDate dateNaissance;
+    private LocalDate birthDate;
 }

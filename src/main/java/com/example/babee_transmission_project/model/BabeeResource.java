@@ -10,7 +10,7 @@ import java.util.UUID;
 @Builder
 public class BabeeResource {
     private UUID id;
-    private String nom;
-    private String prenom;
-    private LocalDate dateNaissance;
+    private String lastName;
+    private String firstName;
+    private LocalDate birthDate;
 }

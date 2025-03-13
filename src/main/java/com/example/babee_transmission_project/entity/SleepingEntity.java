@@ -22,6 +22,6 @@ public class SleepingEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    private Time debut;
-    private Time fin;
+    private Time beginHour;
+    private Time endHour;
 }

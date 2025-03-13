@@ -3,9 +3,9 @@
 
 CREATE TABLE IF NOT EXISTS BABEE (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    prenom VARCHAR(255) NOT NULL,
-    nom VARCHAR(255) NOT NULL,
-    date_naissance DATE NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    birth_date DATE NOT NULL,
     photo BYTEA
 );
 
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS ACTIVITY (
     babee_id UUID NOT NULL,
     event_date DATE NOT NULL,
     name VARCHAR(255) NOT NULL,
-    commentaire VARCHAR(255),
+    comment VARCHAR(255),
     FOREIGN KEY (babee_id) REFERENCES BABEE(id)
 );
 
@@ -31,8 +31,9 @@ CREATE TABLE IF NOT EXISTS HEALTHACT (
     event_date DATE NOT NULL,
     health_act_type INTEGER NOT NULL,
     temperature INTEGER,
-    nom_medicament VARCHAR(255),
+    medecine VARCHAR(255),
     dosage VARCHAR(255),
+    act_hour TIME NOT NULL,
     FOREIGN KEY (babee_id) REFERENCES BABEE(id)
 );
 
@@ -40,8 +41,8 @@ CREATE TABLE IF NOT EXISTS SLEEPING (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     babee_id UUID NOT NULL,
     event_date DATE NOT NULL,
-    debut TIME NOT NULL,
-    fin TIME NOT NULL,
+    begin_hour TIME NOT NULL,
+    end_hour TIME NOT NULL,
     FOREIGN KEY (babee_id) REFERENCES BABEE(id)
 );
 
@@ -51,7 +52,7 @@ CREATE TABLE IF NOT EXISTS CAREACT (
     event_date DATE NOT NULL,
     care_act_type INTEGER NOT NULL,
     care_act_detail INTEGER,
-    commentaire VARCHAR(255),
+    comment VARCHAR(255),
     FOREIGN KEY (babee_id) REFERENCES BABEE(id)
 );
 
@@ -67,6 +68,6 @@ CREATE TABLE IF NOT EXISTS INFORMATION (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     babee_id UUID NOT NULL,
     event_date DATE NOT NULL,
-    commentaire VARCHAR(255) NOT NULL,
+    comment VARCHAR(255) NOT NULL,
     FOREIGN KEY (babee_id) REFERENCES BABEE(id)
 );

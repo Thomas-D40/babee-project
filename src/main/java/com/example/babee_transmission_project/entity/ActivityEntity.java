@@ -22,5 +22,5 @@ public class ActivityEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String name;
-    private String commentaire;
+    private String comment;
 }

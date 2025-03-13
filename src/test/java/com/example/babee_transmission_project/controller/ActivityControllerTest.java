@@ -44,7 +44,7 @@ class ActivityControllerTest {
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
                 .name("Activity Name")
-                .commentaire("Test commentaire")
+                .comment("Test commentaire")
                 .build();
 
         when(activityService.getActivities(any(), any())).thenReturn(List.of(activity));
@@ -67,7 +67,7 @@ class ActivityControllerTest {
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
                 .name("Test Name")
-                .commentaire("Test Commentaire")
+                .comment("Test Commentaire")
                 .build();
 
         when(activityService.getActivityById(id)).thenReturn(activity);
@@ -86,7 +86,7 @@ class ActivityControllerTest {
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
                 .name("New Activity")
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         ActivityResource saved = ActivityResource.builder()
@@ -94,7 +94,7 @@ class ActivityControllerTest {
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
                 .name(input.getName())
-                .commentaire(input.getCommentaire())
+                .comment(input.getComment())
                 .build();
 
         when(activityService.saveActivity(any())).thenReturn(saved);
@@ -114,7 +114,7 @@ class ActivityControllerTest {
         ActivityInputResource input = ActivityInputResource.builder()
                 .eventDate(LocalDate.now())
                 .name("New Activity")
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         mockMvc.perform(post("/activity")
@@ -129,7 +129,7 @@ class ActivityControllerTest {
         ActivityInputResource input = ActivityInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .name("New Activity")
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         mockMvc.perform(post("/activity")
@@ -144,7 +144,7 @@ class ActivityControllerTest {
         ActivityInputResource input = ActivityInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         mockMvc.perform(post("/activity")
@@ -161,7 +161,7 @@ class ActivityControllerTest {
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
                 .name("Updated Activity")
-                .commentaire("Updated Comment")
+                .comment("Updated Comment")
                 .build();
 
         ActivityResource updated = ActivityResource.builder()
@@ -169,7 +169,7 @@ class ActivityControllerTest {
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
                 .name(input.getName())
-                .commentaire(input.getCommentaire())
+                .comment(input.getComment())
                 .build();
 
         when(activityService.updateActivity(eq(id), any())).thenReturn(updated);
@@ -190,7 +190,7 @@ class ActivityControllerTest {
         ActivityInputResource input = ActivityInputResource.builder()
                 .eventDate(LocalDate.now())
                 .name("Updated Activity")
-                .commentaire("Updated Comment")
+                .comment("Updated Comment")
                 .build();
 
         mockMvc.perform(put("/activity/{id}", id)
@@ -206,7 +206,7 @@ class ActivityControllerTest {
         ActivityInputResource input = ActivityInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .name("Updated Activity")
-                .commentaire("Updated Comment")
+                .comment("Updated Comment")
                 .build();
 
         mockMvc.perform(put("/activity/{id}", id)
@@ -222,7 +222,7 @@ class ActivityControllerTest {
         ActivityInputResource input = ActivityInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .commentaire("Updated Comment")
+                .comment("Updated Comment")
                 .build();
 
         mockMvc.perform(put("/activity/{id}", id)

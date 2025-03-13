@@ -3,6 +3,7 @@ package com.example.babee_transmission_project.validator;
 import com.example.babee_transmission_project.model.input.HealthActInputResource;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class HealthActValidator implements ConstraintValidator<HealthAct, Health
 
         Integer healthActType = object.getHealthActType();
         Integer temperature = object.getTemperature();
-        String nomMedicament = object.getNomMedicament();
+        String nomMedicament = object.getMedecine();
         String dosage = object.getDosage();
 
         if (Objects.isNull(healthActType) || (healthActType != 1 && healthActType != 2)) {
@@ -31,7 +32,7 @@ public class HealthActValidator implements ConstraintValidator<HealthAct, Health
             return false;
         }
 
-        if (Objects.nonNull(temperature) && (Objects.nonNull(nomMedicament) || Objects.nonNull(dosage))) {
+        if (Objects.nonNull(temperature) && (!StringUtils.isBlank(nomMedicament) || !StringUtils.isBlank(dosage))) {
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate("Température & Médicaments ne peuvent être indiqués ensemble.")
                     .addPropertyNode("healthActType")
@@ -47,7 +48,7 @@ public class HealthActValidator implements ConstraintValidator<HealthAct, Health
             return false;
         }
 
-        if (healthActType == 2 && (Objects.isNull(nomMedicament) || Objects.isNull(dosage))) {
+        if (healthActType == 2 && (StringUtils.isBlank(nomMedicament) || StringUtils.isBlank(dosage))) {
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate("Il manque le nom du médicament et/ou le dosage")
                     .addPropertyNode("healthActType")

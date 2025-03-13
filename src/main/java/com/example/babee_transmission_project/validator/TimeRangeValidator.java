@@ -18,13 +18,13 @@ public class TimeRangeValidator implements ConstraintValidator<ValidTime, HasTim
             return true;
         }
 
-        Time debut = object.getDebut();
-        Time fin = object.getFin();
+        Time debut = object.getBeginHour();
+        Time fin = object.getEndHour();
 
         if (Objects.isNull(debut)) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext.buildConstraintViolationWithTemplate("Ne peut être null.")
-                    .addPropertyNode("debut")
+                    .addPropertyNode("beginHour")
                     .addConstraintViolation();
 
             return false;
@@ -33,7 +33,7 @@ public class TimeRangeValidator implements ConstraintValidator<ValidTime, HasTim
         if (Objects.isNull(fin)) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext.buildConstraintViolationWithTemplate("Ne peut être null.")
-                    .addPropertyNode("fin")
+                    .addPropertyNode("endHour")
                     .addConstraintViolation();
 
             return false;
@@ -42,7 +42,7 @@ public class TimeRangeValidator implements ConstraintValidator<ValidTime, HasTim
         if (debut.after(fin)) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext.buildConstraintViolationWithTemplate("Les temps ne sont pas cohérents")
-                    .addPropertyNode("debut")
+                    .addPropertyNode("beginHour")
                     .addConstraintViolation();
 
             return false;

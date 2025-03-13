@@ -17,5 +17,5 @@ public class CareActInputResource {
     @NotNull
     private Integer careActType;
     private Integer careActDetail;
-    private String commentaire;
+    private String comment;
 }

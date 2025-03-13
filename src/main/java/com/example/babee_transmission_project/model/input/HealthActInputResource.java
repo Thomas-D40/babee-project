@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -19,6 +20,8 @@ public class HealthActInputResource {
     @NotNull
     private Integer healthActType;
     private Integer temperature;
-    private String nomMedicament;
+    private String medecine;
     private String dosage;
+    @NotNull
+    private Time actHour;
 }

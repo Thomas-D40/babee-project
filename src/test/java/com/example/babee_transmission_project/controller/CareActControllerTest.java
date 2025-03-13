@@ -89,7 +89,7 @@ class CareActControllerTest {
                 .eventDate(LocalDate.now())
                 .careActType(1)
                 .careActDetail(2)
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         CareActResource saved = CareActResource.builder()
@@ -98,7 +98,7 @@ class CareActControllerTest {
                 .eventDate(input.getEventDate())
                 .careActType(input.getCareActType())
                 .careActDetail(input.getCareActDetail())
-                .commentaire(input.getCommentaire())
+                .commentaire(input.getComment())
                 .build();
 
         when(careActService.saveCareAct(any())).thenReturn(saved);
@@ -120,7 +120,7 @@ class CareActControllerTest {
                 .eventDate(LocalDate.now())
                 .careActType(1)
                 .careActDetail(2)
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         mockMvc.perform(post("/care-act")
@@ -136,7 +136,7 @@ class CareActControllerTest {
                 .babeeId(UUID.randomUUID())
                 .careActType(1)
                 .careActDetail(2)
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         mockMvc.perform(post("/care-act")
@@ -152,7 +152,7 @@ class CareActControllerTest {
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
                 .careActDetail(2)
-                .commentaire("New Comment")
+                .comment("New Comment")
                 .build();
 
         mockMvc.perform(post("/care-act")
@@ -170,7 +170,7 @@ class CareActControllerTest {
                 .eventDate(LocalDate.now())
                 .careActType(1)
                 .careActDetail(2)
-                .commentaire("Updated Comment")
+                .comment("Updated Comment")
                 .build();
 
         CareActResource updated = CareActResource.builder()
@@ -179,7 +179,7 @@ class CareActControllerTest {
                 .eventDate(input.getEventDate())
                 .careActType(input.getCareActType())
                 .careActDetail(input.getCareActDetail())
-                .commentaire(input.getCommentaire())
+                .commentaire(input.getComment())
                 .build();
 
         when(careActService.updateCareAct(eq(id), any())).thenReturn(updated);

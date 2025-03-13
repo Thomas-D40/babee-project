@@ -63,7 +63,7 @@ class ActivityServiceTest {
                 .babeeId(babeeId)
                 .eventDate(eventDate)
                 .name("Ballon")
-                .commentaire("avec Maël")
+                .comment("avec Maël")
                 .build();
 
         activityInputResource = ActivityInputResource.builder()

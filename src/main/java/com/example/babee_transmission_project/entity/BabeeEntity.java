@@ -18,7 +18,7 @@ public class BabeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    private String nom;
-    private String prenom;
-    private LocalDate dateNaissance;
+    private String lastName;
+    private String firstName;
+    private LocalDate birthDate;
 }

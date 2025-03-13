@@ -15,5 +15,5 @@ public class InformationInputResource {
     @NotNull
     private LocalDate eventDate;
     @NotNull
-    private String commentaire;
+    private String comment;
 }

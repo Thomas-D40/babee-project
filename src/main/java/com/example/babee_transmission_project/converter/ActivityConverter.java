@@ -11,7 +11,7 @@ public class ActivityConverter {
                 .id(activityEntity.getId())
                 .babeeId(activityEntity.getBabeeId())
                 .name(activityEntity.getName())
-                .commentaire(activityEntity.getCommentaire())
+                .comment(activityEntity.getComment())
                 .eventDate(activityEntity.getEventDate())
                 .build();
     }
@@ -20,7 +20,7 @@ public class ActivityConverter {
         return ActivityEntity.builder()
                 .babeeId(activityInputResource.getBabeeId())
                 .name(activityInputResource.getName())
-                .commentaire(activityInputResource.getCommentaire())
+                .comment(activityInputResource.getComment())
                 .eventDate(activityInputResource.getEventDate())
                 .build();
     }

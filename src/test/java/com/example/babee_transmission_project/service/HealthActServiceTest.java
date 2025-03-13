@@ -55,7 +55,7 @@ class HealthActServiceTest {
                 .babeeId(babeeId)
                 .eventDate(eventDate)
                 .healthActType(2)
-                .nomMedicament("Doliprane")
+                .medecine("Doliprane")
                 .dosage("150 mg")
                 .build();
 
@@ -64,7 +64,7 @@ class HealthActServiceTest {
                 .babeeId(babeeId)
                 .eventDate(eventDate)
                 .healthActType(2)
-                .nomMedicament("Doliprane")
+                .medecine("Doliprane")
                 .dosage("150 mg")
                 .build();
 
@@ -72,7 +72,7 @@ class HealthActServiceTest {
                 .babeeId(babeeId)
                 .eventDate(eventDate)
                 .healthActType(2)
-                .nomMedicament("Doliprane")
+                .medecine("Doliprane")
                 .dosage("150 mg")
                 .build();
     }

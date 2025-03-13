@@ -18,6 +18,6 @@ public class SleepingInputResource implements HasTimeRange {
     private UUID babeeId;
     @NotNull
     private LocalDate eventDate;
-    private Time debut;
-    private Time fin;
+    private Time beginHour;
+    private Time endHour;
 }

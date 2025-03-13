@@ -21,5 +21,5 @@ public class InformationEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    private String commentaire;
+    private String comment;
 }

@@ -79,14 +79,14 @@ class InformationControllerTest {
         InformationInputResource input = InformationInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .commentaire("Information commentaire")
+                .comment("Information commentaire")
                 .build();
 
         InformationResource saved = InformationResource.builder()
                 .id(UUID.randomUUID())
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .commentaire(input.getCommentaire())
+                .commentaire(input.getComment())
                 .build();
 
         when(informationService.saveInformation(any())).thenReturn(saved);
@@ -104,7 +104,7 @@ class InformationControllerTest {
     void shouldFailSavingInformationWhenBabeeIdIsNull() throws Exception {
         InformationInputResource input = InformationInputResource.builder()
                 .eventDate(LocalDate.now())
-                .commentaire("Information commentaire")
+                .comment("Information commentaire")
                 .build();
 
         mockMvc.perform(post("/information")
@@ -118,7 +118,7 @@ class InformationControllerTest {
     void shouldFailSavingInformationWhenEventDateIsNull() throws Exception {
         InformationInputResource input = InformationInputResource.builder()
                 .babeeId(UUID.randomUUID())
-                .commentaire("Information commentaire")
+                .comment("Information commentaire")
                 .build();
 
         mockMvc.perform(post("/information")
@@ -134,14 +134,14 @@ class InformationControllerTest {
         InformationInputResource input = InformationInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .commentaire("Updated Information commentaire")
+                .comment("Updated Information commentaire")
                 .build();
 
         InformationResource updated = InformationResource.builder()
                 .id(id)
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .commentaire(input.getCommentaire())
+                .commentaire(input.getComment())
                 .build();
 
         when(informationService.updateInformation(eq(id), any())).thenReturn(updated);
@@ -160,7 +160,7 @@ class InformationControllerTest {
         UUID id = UUID.randomUUID();
         InformationInputResource input = InformationInputResource.builder()
                 .eventDate(LocalDate.now())
-                .commentaire("Updated Information commentaire")
+                .comment("Updated Information commentaire")
                 .build();
 
         mockMvc.perform(put("/information/{id}", id)
@@ -175,7 +175,7 @@ class InformationControllerTest {
         UUID id = UUID.randomUUID();
         InformationInputResource input = InformationInputResource.builder()
                 .babeeId(UUID.randomUUID())
-                .commentaire("Updated Information commentaire")
+                .comment("Updated Information commentaire")
                 .build();
 
         mockMvc.perform(put("/information/{id}", id)

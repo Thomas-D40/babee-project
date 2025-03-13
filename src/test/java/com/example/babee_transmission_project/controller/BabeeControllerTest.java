@@ -41,9 +41,9 @@ class BabeeControllerTest {
     void shouldGetActivities() throws Exception {
         BabeeResource babee = BabeeResource.builder()
                 .id(UUID.randomUUID())
-                .prenom("Titi")
-                .nom("Toto")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .firstName("Titi")
+                .lastName("Toto")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         when(babeeService.getBabees()).thenReturn(List.of(babee));
@@ -63,9 +63,9 @@ class BabeeControllerTest {
         UUID id = UUID.randomUUID();
         BabeeResource babee = BabeeResource.builder()
                 .id(id)
-                .prenom("Titi")
-                .nom("Toto")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .firstName("Titi")
+                .lastName("Toto")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         when(babeeService.getBabeeById(id)).thenReturn(babee);
@@ -83,16 +83,16 @@ class BabeeControllerTest {
     @Test
     void shouldSaveActivity() throws Exception {
         BabeeInputResource input = BabeeInputResource.builder()
-                .prenom("Titi")
-                .nom("Toto")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .firstName("Titi")
+                .lastName("Toto")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         BabeeResource saved = BabeeResource.builder()
                 .id(UUID.randomUUID())
-                .prenom("Titi")
-                .nom("Toto")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .firstName("Titi")
+                .lastName("Toto")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         when(babeeService.saveBabee(any())).thenReturn(saved);
@@ -112,8 +112,8 @@ class BabeeControllerTest {
     @Test
     void shouldFailSavingActivityWhenNomIsNull() throws Exception {
         BabeeInputResource input = BabeeInputResource.builder()
-                .prenom("Titi")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .firstName("Titi")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         mockMvc.perform(post("/babee")
@@ -126,8 +126,8 @@ class BabeeControllerTest {
     @Test
     void shouldFailSavingActivityWhenPrenomIsNull() throws Exception {
         BabeeInputResource input = BabeeInputResource.builder()
-                .nom("Titi")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .lastName("Titi")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         mockMvc.perform(post("/babee")
@@ -140,8 +140,8 @@ class BabeeControllerTest {
     @Test
     void shouldFailSavingActivityWhenDateNaissanceIsNull() throws Exception {
         BabeeInputResource input = BabeeInputResource.builder()
-                .prenom("Titi")
-                .nom("Toto")
+                .firstName("Titi")
+                .lastName("Toto")
                 .build();
 
         mockMvc.perform(post("/babee")
@@ -156,16 +156,16 @@ class BabeeControllerTest {
     void shouldUpdateActivity() throws Exception {
         UUID id = UUID.randomUUID();
         BabeeInputResource input = BabeeInputResource.builder()
-                .prenom("Titi")
-                .nom("Toto")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .firstName("Titi")
+                .lastName("Toto")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         BabeeResource updated = BabeeResource.builder()
                 .id(id)
-                .prenom(input.getPrenom())
-                .nom(input.getNom())
-                .dateNaissance(input.getDateNaissance())
+                .firstName(input.getFirstName())
+                .lastName(input.getLastName())
+                .birthDate(input.getBirthDate())
                 .build();
 
         when(babeeService.updateBabee(eq(id), any())).thenReturn(updated);
@@ -185,8 +185,8 @@ class BabeeControllerTest {
     void shouldFailUpdatingActivityWhenNomIsNull() throws Exception {
         UUID id = UUID.randomUUID();
         BabeeInputResource input = BabeeInputResource.builder()
-                .prenom("Titi")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .firstName("Titi")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         mockMvc.perform(put("/babee/{id}", id)
@@ -200,8 +200,8 @@ class BabeeControllerTest {
     void shouldFailUpdatingActivityWhenPrenomIsNull() throws Exception {
         UUID id = UUID.randomUUID();
         BabeeInputResource input = BabeeInputResource.builder()
-                .nom("Titi")
-                .dateNaissance(LocalDate.of(2025, 01, 01))
+                .lastName("Titi")
+                .birthDate(LocalDate.of(2025, 01, 01))
                 .build();
 
         mockMvc.perform(put("/babee/{id}", id)
@@ -215,8 +215,8 @@ class BabeeControllerTest {
     void shouldFailUpdatingActivityWhenDateNaissanceIsNull() throws Exception {
         UUID id = UUID.randomUUID();
         BabeeInputResource input = BabeeInputResource.builder()
-                .prenom("Titi")
-                .nom("Toto")
+                .firstName("Titi")
+                .lastName("Toto")
                 .build();
 
         mockMvc.perform(put("/babee/{id}", id)

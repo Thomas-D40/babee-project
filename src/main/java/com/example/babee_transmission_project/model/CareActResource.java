@@ -8,5 +8,5 @@ import lombok.experimental.SuperBuilder;
 public class CareActResource extends BaseResource {
     private Integer careActType;
     private Integer careActDetail;
-    private String commentaire;
+    private String comment;
 }

@@ -159,7 +159,7 @@ class HealthActControllerTest {
                 .eventDate(LocalDate.now())
                 .healthActType(1)
                 .temperature(37)
-                .nomMedicament("Paracetamol")
+                .medecine("Paracetamol")
                 .dosage("500mg")
                 .build();
 

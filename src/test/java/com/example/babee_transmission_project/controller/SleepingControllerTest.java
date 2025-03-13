@@ -42,8 +42,8 @@ class SleepingControllerTest {
                 .id(UUID.randomUUID())
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .debut(Time.valueOf("22:00:00"))
-                .fin(Time.valueOf("23:00:00"))
+                .begin(Time.valueOf("22:00:00"))
+                .end(Time.valueOf("23:00:00"))
                 .build();
 
         when(sleepingService.getSleepings(any(), any())).thenReturn(List.of(sleeping));
@@ -65,8 +65,8 @@ class SleepingControllerTest {
                 .id(id)
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .debut(Time.valueOf("22:00:00"))
-                .fin(Time.valueOf("23:00:00"))
+                .begin(Time.valueOf("22:00:00"))
+                .end(Time.valueOf("23:00:00"))
                 .build();
 
         when(sleepingService.getSleepingById(id)).thenReturn(sleeping);
@@ -84,16 +84,16 @@ class SleepingControllerTest {
         SleepingInputResource input = SleepingInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .debut(Time.valueOf("22:00:00"))
-                .fin(Time.valueOf("23:00:00"))
+                .beginHour(Time.valueOf("22:00:00"))
+                .endHour(Time.valueOf("23:00:00"))
                 .build();
 
         SleepingResource saved = SleepingResource.builder()
                 .id(UUID.randomUUID())
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .debut(input.getDebut())
-                .fin(input.getFin())
+                .begin(input.getBeginHour())
+                .end(input.getEndHour())
                 .build();
 
         when(sleepingService.saveSleeping(any())).thenReturn(saved);
@@ -112,8 +112,8 @@ class SleepingControllerTest {
     void shouldFailSavingSleepingWhenBabeeIdIsNull() throws Exception {
         SleepingInputResource input = SleepingInputResource.builder()
                 .eventDate(LocalDate.now())
-                .debut(Time.valueOf("22:00:00"))
-                .fin(Time.valueOf("23:00:00"))
+                .beginHour(Time.valueOf("22:00:00"))
+                .endHour(Time.valueOf("23:00:00"))
                 .build();
 
         mockMvc.perform(post("/sleeping")
@@ -127,8 +127,8 @@ class SleepingControllerTest {
     void shouldFailSavingSleepingWhenEventDateIsNull() throws Exception {
         SleepingInputResource input = SleepingInputResource.builder()
                 .babeeId(UUID.randomUUID())
-                .debut(Time.valueOf("22:00:00"))
-                .fin(Time.valueOf("23:00:00"))
+                .beginHour(Time.valueOf("22:00:00"))
+                .endHour(Time.valueOf("23:00:00"))
                 .build();
 
         mockMvc.perform(post("/sleeping")
@@ -143,7 +143,7 @@ class SleepingControllerTest {
         SleepingInputResource input = SleepingInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .fin(Time.valueOf("23:00:00"))
+                .endHour(Time.valueOf("23:00:00"))
                 .build();
 
         mockMvc.perform(post("/sleeping")
@@ -158,7 +158,7 @@ class SleepingControllerTest {
         SleepingInputResource input = SleepingInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .debut(Time.valueOf("22:00:00"))
+                .beginHour(Time.valueOf("22:00:00"))
                 .build();
 
         mockMvc.perform(post("/sleeping")
@@ -173,8 +173,8 @@ class SleepingControllerTest {
         SleepingInputResource input = SleepingInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .debut(Time.valueOf("23:00:00"))
-                .fin(Time.valueOf("22:00:00"))
+                .beginHour(Time.valueOf("23:00:00"))
+                .endHour(Time.valueOf("22:00:00"))
                 .build();
 
         mockMvc.perform(post("/sleeping")
@@ -190,16 +190,16 @@ class SleepingControllerTest {
         SleepingInputResource input = SleepingInputResource.builder()
                 .babeeId(UUID.randomUUID())
                 .eventDate(LocalDate.now())
-                .debut(Time.valueOf("22:00:00"))
-                .fin(Time.valueOf("23:00:00"))
+                .beginHour(Time.valueOf("22:00:00"))
+                .endHour(Time.valueOf("23:00:00"))
                 .build();
 
         SleepingResource updated = SleepingResource.builder()
                 .id(id)
                 .babeeId(input.getBabeeId())
                 .eventDate(input.getEventDate())
-                .debut(input.getDebut())
-                .fin(input.getFin())
+                .begin(input.getBeginHour())
+                .end(input.getEndHour())
                 .build();
 
         when(sleepingService.updateSleeping(eq(id), any())).thenReturn(updated);

@@ -7,5 +7,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ActivityResource extends BaseResource {
     private String name;
-    private String commentaire;
+    private String comment;
 }

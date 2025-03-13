@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.sql.Time;
 import java.util.UUID;
 
 @Entity
@@ -23,6 +24,7 @@ public class HealthActEntity extends BaseEntity {
     private UUID id;
     private Integer healthActType;
     private Integer temperature;
-    private String nomMedicament;
+    private String medecine;
     private String dosage;
+    private Time actHour;
 }

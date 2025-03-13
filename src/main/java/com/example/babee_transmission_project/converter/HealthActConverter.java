@@ -13,8 +13,9 @@ public class HealthActConverter {
                 .eventDate(healthActEntity.getEventDate())
                 .healthActType(healthActEntity.getHealthActType())
                 .temperature(healthActEntity.getTemperature())
-                .nomMedicament(healthActEntity.getNomMedicament())
+                .medecine(healthActEntity.getMedecine())
                 .dosage(healthActEntity.getDosage())
+                .actHour(healthActEntity.getActHour())
                 .build();
     }
 
@@ -24,8 +25,9 @@ public class HealthActConverter {
                 .eventDate(healthActInputResource.getEventDate())
                 .healthActType(healthActInputResource.getHealthActType())
                 .temperature(healthActInputResource.getTemperature())
-                .nomMedicament(healthActInputResource.getNomMedicament())
+                .medecine(healthActInputResource.getMedecine())
                 .dosage(healthActInputResource.getDosage())
+                .actHour(healthActInputResource.getActHour())
                 .build();
     }
 }
