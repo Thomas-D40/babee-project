@@ -15,10 +15,11 @@ import java.util.UUID;
 @Setter
 @Table(name = "babee")
 public class BabeeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-    private String lastName;
-    private String firstName;
-    private LocalDate birthDate;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
+	private String lastName;
+	private String firstName;
+	private LocalDate birthDate;
+	private String photoUrl;
 }

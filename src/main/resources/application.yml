@@ -16,4 +16,7 @@ spring:
     password: admin
     driverClassName: org.postgresql.Driver
 
+file:
+  upload-dir: src/main/resources/uploads
+
 

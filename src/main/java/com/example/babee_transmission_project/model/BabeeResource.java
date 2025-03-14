@@ -13,4 +13,5 @@ public class BabeeResource {
     private String lastName;
     private String firstName;
     private LocalDate birthDate;
+    private String photo;
 }

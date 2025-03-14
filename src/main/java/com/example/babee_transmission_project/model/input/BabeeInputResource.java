@@ -15,4 +15,5 @@ public class BabeeInputResource {
     private String firstName;
     @NotNull
     private LocalDate birthDate;
+    private String photo;
 }
