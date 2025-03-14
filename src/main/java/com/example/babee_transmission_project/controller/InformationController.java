@@ -22,8 +22,8 @@ public class InformationController {
     }
 
     @GetMapping
-    public List<InformationResource> getInformations(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate day) {
-        return informationService.getInformations(babeeId, day);
+    public List<InformationResource> getInformations(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+        return informationService.getInformations(babeeId, eventDate);
     }
 
 

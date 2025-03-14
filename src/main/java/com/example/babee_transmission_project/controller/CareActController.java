@@ -22,8 +22,8 @@ public class CareActController {
     }
 
     @GetMapping
-    public List<CareActResource> getCareActs(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate day) {
-        return careActService.getCareActs(babeeId, day);
+    public List<CareActResource> getCareActs(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+        return careActService.getCareActs(babeeId, eventDate);
     }
 
 

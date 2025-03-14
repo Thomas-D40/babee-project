@@ -22,8 +22,8 @@ public class ActivityController {
     }
 
     @GetMapping
-    public List<ActivityResource> getActivities(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate day) {
-        return activityService.getActivities(babeeId, day);
+    public List<ActivityResource> getActivities(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+        return activityService.getActivities(babeeId, eventDate);
     }
 
 

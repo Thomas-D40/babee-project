@@ -22,8 +22,8 @@ public class SleepingController {
     }
 
     @GetMapping
-    public List<SleepingResource> getSleepings(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate day) {
-        return sleepingService.getSleepings(babeeId, day);
+    public List<SleepingResource> getSleepings(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+        return sleepingService.getSleepings(babeeId, eventDate);
     }
 
 

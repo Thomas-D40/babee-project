@@ -22,8 +22,8 @@ public class FeedingController {
     }
 
     @GetMapping
-    public List<FeedingResource> getFeedings(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate day) {
-        return feedingService.getFeedings(babeeId, day);
+    public List<FeedingResource> getFeedings(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+        return feedingService.getFeedings(babeeId, eventDate);
     }
 
 

@@ -22,8 +22,8 @@ public class HealthActController {
     }
 
     @GetMapping
-    public List<HealthActResource> getHealthActs(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate day) {
-        return healthActService.getHealthActs(babeeId, day);
+    public List<HealthActResource> getHealthActs(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+        return healthActService.getHealthActs(babeeId, eventDate);
     }
 
 
