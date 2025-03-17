@@ -1,0 +1,80 @@
+@if (babee(); as babee) {
+<section class="container mb-4">
+  <div class="p-3 bg-light rounded">
+    <!-- row pour organiser la photo et les infos côte à côte -->
+    <div class="row">
+      <div class="col-md-2">
+        <img
+          [src]="getImageSrc(babee.photo)"
+          alt="Photo Enfant"
+          class="img-fluid rounded"
+        />
+      </div>
+      <div class="col-md-9 d-flex flex-column">
+        <p class="m-2">Nom: {{ babee.lastName }}</p>
+        <p class="m-2">Prénom: {{ babee.firstName }}</p>
+        <p class="m-2">Age: {{ babee.birthDate | age }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container container-sm mb-2">
+  <div class="flex-grow-1 mx-2">
+    <label for="dateSelector" class="form-label visually-hidden">Date :</label>
+    <input
+      type="date"
+      id="dateSelector"
+      class="form-control text-center"
+      [formControl]="selectedDate"
+      value="{{ selectedDate.value }}"
+    />
+  </div>
+</div>
+
+<section class="container">
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <app-activities
+        [date]="selectedDate.value!"
+        [babeeId]="babeeId"
+      ></app-activities>
+    </div>
+    <div class="col-md-4">
+      <app-feeding
+        [date]="selectedDate.value!"
+        [babeeId]="babeeId"
+      ></app-feeding>
+    </div>
+    <div class="col-md-4">
+      <app-health-acts
+        [date]="selectedDate.value!"
+        [babeeId]="babeeId"
+      ></app-health-acts>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <app-care-acts
+        [date]="selectedDate.value!"
+        [babeeId]="babeeId"
+      ></app-care-acts>
+    </div>
+    <div class="col-md-4">
+      <app-sleeping
+        [date]="selectedDate.value!"
+        [babeeId]="babeeId"
+      ></app-sleeping>
+    </div>
+    <div class="col-md-4">
+      <app-infos [date]="selectedDate.value!" [babeeId]="babeeId"></app-infos>
+    </div>
+  </div>
+</section>
+} @if(loading()) {
+<div class="d-flex justify-content-center">
+  <div class="spinner-border text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+}

@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Non-static Resource
+./src/main/resources/uploads

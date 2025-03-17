@@ -1,0 +1,86 @@
+<div class="border rounded p-3 mb-3">
+  <!-- Titre de la rubrique -->
+  <h3 class="mb-3 text-center">Sommeil</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">Début</th>
+        <th scope="col">Fin</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if(isLoading()) {
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      } @else { @for(sleep of sleepingList(); track sleep.id) {
+      <tr class="text-center">
+        <td>{{ sleep.beginHour }}</td>
+        <td>{{ sleep.endHour }}</td>
+        <td>{{ sleep.beginHour | timeDiff : sleep.endHour }}</td>
+        <td>
+          <button
+            class="btn"
+            aria-label="Close"
+            (click)="deleteSleeping(sleep.id!)"
+          >
+            <span class="text-danger" aria-hidden="true">&times;</span>
+          </button>
+        </td>
+      </tr>
+      }}
+    </tbody>
+  </table>
+
+  <div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+      <h5 class="card-title text-center mb-3">
+        Ajouter une période de sommeil
+      </h5>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <!-- Début -->
+          <div class="col-md-5">
+            <label for="debut" class="form-label">Début</label>
+            <div class="input-group">
+              <input
+                type="time"
+                id="beginHour"
+                class="form-control"
+                formControlName="beginHour"
+                step="300"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Fin -->
+          <div class="col-md-5">
+            <label for="fin" class="form-label">Fin</label>
+            <div class="input-group">
+              <input
+                type="time"
+                id="endHour"
+                class="form-control"
+                formControlName="endHour"
+                step="300"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-primary" [disabled]="form.invalid">
+            Ajouter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

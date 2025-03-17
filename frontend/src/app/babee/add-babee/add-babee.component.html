@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Prénom</label>
+      <input
+        id="firstName"
+        type="text"
+        class="form-control"
+        formControlName="firstName"
+        [class.is-invalid]="
+          form.get('firstName')?.invalid && form.get('firstName')?.touched
+        "
+      />
+      @if (form.get('firstName')?.invalid && form.get('firstName')?.touched) {
+      <div class="invalid-feedback">Le prénom est requis.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Nom</label>
+      <input
+        id="lastName"
+        type="text"
+        class="form-control"
+        formControlName="lastName"
+        [class.is-invalid]="
+          form.get('lastName')?.invalid && form.get('lastName')?.touched
+        "
+      />
+      @if (form.get('lastName')?.invalid && form.get('lastName')?.touched) {
+      <div class="invalid-feedback">Le nom est requis.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="birthDate" class="form-label">Date de naissance</label>
+      <input
+        id="birthDate"
+        type="date"
+        class="form-control"
+        formControlName="birthDate"
+        [class.is-invalid]="
+          form.get('birthDate')?.invalid && form.get('birthDate')?.touched
+        "
+      />
+      @if (form.get('birthDate')?.invalid && form.get('birthDate')?.touched) {
+      <div class="invalid-feedback">La date de naissance est requise.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="photo" class="form-label">Photo de profil</label>
+      <input
+        id="photo"
+        type="file"
+        class="form-control"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Valider
+    </button>
+  </form>
+</div>

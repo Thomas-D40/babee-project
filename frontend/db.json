@@ -1,0 +1,337 @@
+{
+  "babee": [
+    {
+      "id": 1,
+      "prenom": "Babee 1",
+      "nom": "Family 1",
+      "dateNaissance": "2020-01-01",
+      "age": 1
+    },
+    {
+      "id": 2,
+      "prenom": "Babee 2",
+      "nom": "Family 2",
+      "dateNaissance": "2020-01-01",
+      "age": 2
+    }
+  ],
+  "activity": [
+    {
+      "id": 1,
+      "name": "Activity 1",
+      "babeeId": 1,
+      "activityType": "1",
+      "date": "2025-02-25T12:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Activity 2",
+      "babeeId": 1,
+      "activityType": "2",
+      "date": "2025-02-25T12:00:00"
+    },
+    {
+      "name": "Dodo",
+      "date": "2025-02-26T14:59:57.018Z",
+      "babeeId": 1,
+      "id": 5
+    },
+    {
+      "name": "Dodo",
+      "date": "2025-02-26T19:30:35.743Z",
+      "babeeId": 1,
+      "id": 7
+    },
+    {
+      "name": "Test",
+      "date": "2025-02-27T09:32:23.915Z",
+      "babeeId": 1,
+      "id": 9
+    },
+    {
+      "name": "Dodo",
+      "date": "2025-02-28T09:55:45.896Z",
+      "babeeId": 1,
+      "id": 10
+    },
+    {
+      "name": "dodo",
+      "date": "2025-03-10T18:39:17.382Z",
+      "babeeId": 1,
+      "id": 11
+    },
+    {
+      "name": "coloriage",
+      "date": "2025-03-10T18:39:21.616Z",
+      "babeeId": 1,
+      "id": 12
+    }
+  ],
+  "activityTypes": [
+    {
+      "id": 1,
+      "name": "Coloriage"
+    },
+    {
+      "id": 2,
+      "name": "Dessin"
+    }
+  ],
+  "healthAct": [
+    {
+      "id": 1,
+      "babeeId": 1,
+      "healthActsType": "1",
+      "temperature": 36.5,
+      "date": "2025-02-25T12:00:00",
+      "medicaments": null,
+      "quantity": null
+    },
+    {
+      "id": 2,
+      "name": "Health 2",
+      "babeeId": 2,
+      "healthActsType": "2",
+      "temperature": null,
+      "date": "2025-02-25T12:00:00",
+      "medicaments": "Doliprane",
+      "quantity": "100"
+    },
+    {
+      "babeeId": 1,
+      "date": "2025-02-27T15:07:58.513Z",
+      "healthActType": "1",
+      "heure": "08:00",
+      "temperature": 15,
+      "nomMedicament": "",
+      "dosage": "",
+      "id": 3
+    },
+    {
+      "babeeId": 1,
+      "date": "2025-02-27T15:16:20.045Z",
+      "healthActType": "1",
+      "heure": "08:00",
+      "temperature": 35,
+      "nomMedicament": "",
+      "dosage": "",
+      "id": 4
+    },
+    {
+      "babeeId": 1,
+      "date": "2025-02-28T08:12:28.662Z",
+      "healthActType": 1,
+      "heure": "08:00",
+      "temperature": 36.8,
+      "nomMedicament": "",
+      "dosage": "",
+      "id": 5
+    },
+    {
+      "babeeId": 1,
+      "date": "2025-02-28T09:56:19.571Z",
+      "healthActType": "2",
+      "heure": "11:06",
+      "temperature": "",
+      "nomMedicament": "Doliprane",
+      "dosage": "15mg",
+      "id": 6
+    },
+    {
+      "babeeId": 1,
+      "date": "2025-03-10T15:36:58.663Z",
+      "healthActType": 1,
+      "heure": "08:00",
+      "temperature": 35,
+      "nomMedicament": "",
+      "dosage": "",
+      "id": 7
+    }
+  ],
+  "healthActTypes": [
+    {
+      "id": 1,
+      "name": "Temperature"
+    },
+    {
+      "id": 2,
+      "name": "Medicaments"
+    }
+  ],
+  "sleeping": [
+    {
+      "id": 1,
+      "name": "Sleep 1",
+      "babeeId": 1,
+      "date": "2025-02-25T12:00:00",
+      "begin": "2020-01-25T12:00:00",
+      "end": "2020-01-25T12:45:00",
+      "duration": 45
+    },
+    {
+      "id": 2,
+      "name": "Sleep 2",
+      "babeeId": 2,
+      "date": "2025-02-25T12:00:00",
+      "begin": "2020-01-01T12:00:00",
+      "end": "2020-01-01T12:45:00",
+      "duration": 45
+    },
+    {
+      "begin": "08:00",
+      "end": "08:08",
+      "babeeId": 1,
+      "date": "2025-02-27T10:30:55.102Z",
+      "id": 4
+    },
+    {
+      "begin": "08:00",
+      "end": "08:05",
+      "babeeId": 1,
+      "date": "2025-02-27T14:04:49.218Z",
+      "id": 5
+    },
+    {
+      "begin": "08:00",
+      "end": "08:05",
+      "babeeId": 1,
+      "date": "2025-02-28T09:55:51.214Z",
+      "id": 6
+    }
+  ],
+  "careAct": [
+    {
+      "id": 2,
+      "babeeId": 2,
+      "careActType": 1,
+      "careActDetail": 1,
+      "commentaire": null,
+      "date": "2025-02-26T12:00:00"
+    },
+    {
+      "date": "2025-02-27T08:47:40.080Z",
+      "babeeId": 1,
+      "careActType": 1,
+      "careActDetail": 1,
+      "commentaire": "",
+      "id": 4
+    },
+    {
+      "date": "2025-02-27T09:24:39.399Z",
+      "babeeId": 1,
+      "careActType": 2,
+      "careActDetail": 2,
+      "commentaire": "",
+      "id": 5
+    },
+    {
+      "date": "2025-02-27T10:34:02.705Z",
+      "babeeId": 1,
+      "careActType": 1,
+      "careActDetail": 3,
+      "commentaire": "",
+      "id": 6
+    },
+    {
+      "date": "2025-02-28T09:55:55.505Z",
+      "babeeId": 1,
+      "careActType": 1,
+      "careActDetail": 2,
+      "commentaire": "",
+      "id": 7
+    },
+    {
+      "date": "2025-02-28T09:55:57.184Z",
+      "babeeId": 1,
+      "careActType": 3,
+      "careActDetail": null,
+      "commentaire": "",
+      "id": 8
+    },
+    {
+      "date": "2025-02-28T09:55:59.598Z",
+      "babeeId": 1,
+      "careActType": 4,
+      "careActDetail": null,
+      "commentaire": "",
+      "id": 9
+    }
+  ],
+  "feeding": [
+    {
+      "babeeId": 2,
+      "date": "2025-03-10T15:50:58.551Z",
+      "feedingInformations": [
+        "Sauté de porc - A gouté"
+      ],
+      "id": 8
+    },
+    {
+      "babeeId": 1,
+      "date": "2025-03-10T18:38:27.766Z",
+      "feedingInformations": [
+        "Sauté de porc - A gouté",
+        "Semoule - Entièrement"
+      ],
+      "id": 9
+    },
+    {
+      "babeeId": 1,
+      "date": "2025-03-10T18:38:34.293Z",
+      "feedingInformations": [
+        "yaourt nature - A gouté",
+        "compote pommes - badiane",
+        "pain - Entièrement"
+      ],
+      "id": 10
+    }
+  ],
+  "information": [
+    {
+      "id": 1,
+      "commentaire": "Info 1",
+      "babeeId": 1,
+      "date": "2025-02-25T12:00:00"
+    },
+    {
+      "id": 2,
+      "commentaire": "Info 2",
+      "babeeId": 1,
+      "date": "2025-02-25T12:00:00"
+    },
+    {
+      "commentaire": "Test",
+      "date": "2025-02-27T09:34:58.896Z",
+      "babeeId": 1,
+      "id": 3
+    },
+    {
+      "commentaire": "test",
+      "date": "2025-02-28T09:55:49.475Z",
+      "babeeId": 1,
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "role": "creche"
+    },
+    {
+      "id": 2,
+      "username": "parent1",
+      "password": "parent1",
+      "role": "parent",
+      "bebeId": 1
+    },
+    {
+      "id": 3,
+      "username": "parent2",
+      "password": "parent2",
+      "role": "parent",
+      "bebeId": 2
+    }
+  ]
+}

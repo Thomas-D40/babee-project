@@ -11,40 +11,40 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/information")
+@RequestMapping("/api/information")
 public class InformationController {
-
-
-    private final InformationService informationService;
-
-    public InformationController(InformationService informationService) {
-        this.informationService = informationService;
-    }
-
-    @GetMapping
-    public List<InformationResource> getInformations(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
-        return informationService.getInformations(babeeId, eventDate);
-    }
-
-
-    @GetMapping("/{id}")
-    public InformationResource getInformationId(@PathVariable UUID id) {
-        return informationService.getInformationById(id);
-    }
-
-    @PostMapping()
-    public InformationResource saveInformation(@RequestBody @Validated InformationInputResource informationInputResource) {
-        return informationService.saveInformation(informationInputResource);
-    }
-
-    @PutMapping("/{id}")
-    public InformationResource updateInformation(@PathVariable UUID id, @RequestBody @Validated InformationInputResource informationInputResource) {
-        return informationService.updateInformation(id, informationInputResource);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteInformation(@PathVariable UUID id) {
-        informationService.deleteInformationById(id);
-    }
-
+	
+	
+	private final InformationService informationService;
+	
+	public InformationController(InformationService informationService) {
+		this.informationService = informationService;
+	}
+	
+	@GetMapping
+	public List<InformationResource> getInformations(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+		return informationService.getInformations(babeeId, eventDate);
+	}
+	
+	
+	@GetMapping("/{id}")
+	public InformationResource getInformationId(@PathVariable UUID id) {
+		return informationService.getInformationById(id);
+	}
+	
+	@PostMapping()
+	public InformationResource saveInformation(@RequestBody @Validated InformationInputResource informationInputResource) {
+		return informationService.saveInformation(informationInputResource);
+	}
+	
+	@PutMapping("/{id}")
+	public InformationResource updateInformation(@PathVariable UUID id, @RequestBody @Validated InformationInputResource informationInputResource) {
+		return informationService.updateInformation(id, informationInputResource);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteInformation(@PathVariable UUID id) {
+		informationService.deleteInformationById(id);
+	}
+	
 }

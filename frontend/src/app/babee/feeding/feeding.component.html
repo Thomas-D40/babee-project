@@ -1,0 +1,99 @@
+<div class="border rounded p-3 mb-3">
+  <!-- Titre de la rubrique -->
+  <h3 class="mb-3 text-center">Repas</h3>
+
+  <!-- Liste des informations -->
+  <ul class="list-group">
+    @for(feeding of feedingList(); track feeding.id) {
+
+    <ul class="list-group mb-1">
+      <li
+        class="list-group-item list-group-item-primary fw-bold d-flex align-items-center justify-content-between"
+      >
+        Repas {{ $index + 1 }}
+        <button
+          class="btn"
+          aria-label="Close"
+          (click)="deleteFeeding(feeding.id!)"
+        >
+          <span class="text-danger" aria-hidden="true">&times;</span>
+        </button>
+      </li>
+
+      @for(feedingInformation of feeding.feedingInformations; track
+      feedingInformation) {
+      <li class="list-group-item">{{ feedingInformation }}</li>
+      }
+    </ul>
+    }
+  </ul>
+
+  <div class="container mt-4 border rounded">
+    <h5 class="mt-2 mb-3 text-center">Ajouter un repas</h5>
+    <div class="mb-3">
+      <label for="keySelector" class="form-label"
+        >Sélectionnez une catégorie :</label
+      >
+      <select id="keySelector" class="form-select" [(ngModel)]="selectedKey">
+        <option *ngFor="let key of objectKeys(repas_V2)" [value]="key">
+          {{ key }}
+        </option>
+      </select>
+    </div>
+    @if(selectedKey() == 'biberon') {
+    <form [formGroup]="bottleForm" (ngSubmit)="onBottleFormSubmit()">
+      <input
+        formControlName="quantity"
+        class="form-control mb-2"
+        placeholder="Quantité"
+        type="text"
+      />
+      <div class="d-flex justify-content-end">
+        <button type="submit " class="btn btn-primary mb-2">Ajouter</button>
+      </div>
+    </form>
+    } @if (['petit','moyen','grand','gouter_petit',
+    'gouter_moyen','gouter_grand'].includes(selectedKey())) {
+    <form
+      [formGroup]="mealFormGroup()"
+      (ngSubmit)="onMealFormSubmit()"
+      class="container-fluid"
+    >
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered rounded-top">
+          <thead class="table-dark">
+            <tr>
+              <th class="text-center">Plat</th>
+              @for (option of mealOptions; track option) {
+              <th class="text-center">{{ option }}</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for (ligne of repas_V2[selectedKey()]; track ligne) {
+            <tr>
+              <td class="text-center fw-bold">{{ ligne }}</td>
+              @for (option of mealOptions; track option) {
+              <td class="text-center">
+                <div class="form-check d-flex justify-content-center">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    [formControlName]="getMealControlName(ligne, option)"
+                  />
+                </div>
+              </td>
+              }
+            </tr>
+            }
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-end">
+          <button type="submit " class="btn btn-primary mb-2">Ajouter</button>
+        </div>
+      </div>
+    </form>
+
+    }
+  </div>
+</div>

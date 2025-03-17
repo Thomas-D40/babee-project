@@ -1,0 +1,117 @@
+<div class="border rounded p-3 mb-3">
+  <!-- Titre de la rubrique -->
+  <h3 class="mb-3 text-center">Santé</h3>
+
+  <!-- Liste des informations -->
+  <ul class="list-group">
+    @if(isLoading()) {
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    } @else { @for(healthAct of healthActList(); track healthAct.id) {
+    @if(healthAct.healthActType == 1) {
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      <span style="font-weight: bold">Température:</span>
+      {{ healthAct.temperature }}°C à
+      {{ healthAct.actHour }}
+      <button
+        class="btn"
+        aria-label="Close"
+        (click)="deleteHealthAct(healthAct.id!)"
+      >
+        <span class="text-danger" aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    } @if(healthAct.healthActType == 2) {
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      <span style="font-weight: bold">Médicaments:</span>
+      {{ healthAct.dosage }} de
+      {{ healthAct.medecine }}
+      à
+      {{ healthAct.actHour }}
+      <button
+        class="btn"
+        aria-label="Close"
+        (click)="deleteHealthAct(healthAct.id!)"
+      >
+        <span class="text-danger" aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    } }}
+  </ul>
+
+  <div class="container mt-4 border rounded">
+    <h5 class="mt-2 mb-3 text-center">Ajouter un acte de santé</h5>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <select
+        class="form-select w-auto"
+        formControlName="healthActType"
+        (change)="resetFormFields()"
+      >
+        <option
+          *ngFor="let healthActType of healthActTypeList"
+          [value]="healthActType.id"
+        >
+          {{ healthActType.label }}
+        </option>
+      </select>
+
+      @if(healthActType.value == 1) {
+      <div class="input-group mt-2 mb-3" style="max-width: 200px">
+        <span class="input-group-text">
+          <i class="bi bi-thermometer-half"></i>
+        </span>
+        <input
+          type="number"
+          formControlName="temperature"
+          class="form-control"
+          id="temperature"
+        />
+        <span class="input-group-text">°C</span>
+      </div>
+      } @if(healthActType.value == 2) {
+
+      <input
+        type="text"
+        class="form-control mt-2"
+        formControlName="nomMedicament"
+        id="temperature"
+        placeholder="Médicaments"
+      />
+      <div class="input-group mt-2 mb-3" style="max-width: 200px">
+        <input
+          type="text"
+          formControlName="dosage"
+          class="form-control"
+          id="quantity"
+        />
+      </div>
+      }
+      <div class="col-md-4">
+        <input
+          type="time"
+          id="actHour"
+          class="form-control"
+          formControlName="actHour"
+          list="times"
+          required
+        />
+      </div>
+      <div class="d-flex justify-content-end">
+        <button
+          type="submit "
+          class="btn btn-primary mb-2"
+          [disabled]="form.invalid"
+        >
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

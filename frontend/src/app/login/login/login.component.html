@@ -1,0 +1,16 @@
+<div class="login-container">
+  <h2>Connexion</h2>
+  <form [formGroup]="form" (submit)="login(); $event.preventDefault()">
+    <label>Nom d'utilisateur :</label>
+    <input type="text" formControlName="username" required />
+
+    <label>Mot de passe :</label>
+    <input type="password" formControlName="password" required />
+
+    <button type="submit">Se connecter</button>
+  </form>
+
+  @if(form.hasError('invalidLogin')){
+  <p class="error">Identifiants incorrects</p>
+  }
+</div>

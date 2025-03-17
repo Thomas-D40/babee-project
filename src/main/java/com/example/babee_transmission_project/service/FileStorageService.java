@@ -49,7 +49,6 @@ public class FileStorageService {
 			Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
 			
 			if (!Files.exists(filePath)) {
-				// Essai de lecture dans le classpath
 				filePath = new ClassPathResource(fileName).getFile().toPath();
 			}
 			

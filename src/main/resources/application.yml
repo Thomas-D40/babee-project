@@ -1,19 +1,23 @@
 spring:
   application:
     name: babee-transmission-project
+  thymeleaf:
+    cache: false
+  web:
+    resources:
+      static-locations: classpath:/static/
   liquibase:
     change-log: classpath:/db/changelog/changelog.xml
     enabled: true
   jpa:
     database: POSTGRESQL
-    show-sql: true
     hibernate:
       ddl-auto: none
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/babee_database
-    username: admin
-    password: admin
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
     driverClassName: org.postgresql.Driver
 
 file:

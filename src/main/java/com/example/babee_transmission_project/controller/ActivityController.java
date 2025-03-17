@@ -11,40 +11,40 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/activity")
+@RequestMapping("/api/activity")
 public class ActivityController {
-
-
-    private final ActivityService activityService;
-
-    public ActivityController(ActivityService activityService) {
-        this.activityService = activityService;
-    }
-
-    @GetMapping
-    public List<ActivityResource> getActivities(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
-        return activityService.getActivities(babeeId, eventDate);
-    }
-
-
-    @GetMapping("/{id}")
-    public ActivityResource getActivityById(@PathVariable UUID id) {
-        return activityService.getActivityById(id);
-    }
-
-    @PostMapping()
-    public ActivityResource saveActivity(@RequestBody @Validated ActivityInputResource activityInputResource) {
-        return activityService.saveActivity(activityInputResource);
-    }
-
-    @PutMapping("/{id}")
-    public ActivityResource updateActivity(@PathVariable UUID id, @RequestBody @Validated ActivityInputResource activityInputResource) {
-        return activityService.updateActivity(id, activityInputResource);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteActivity(@PathVariable UUID id) {
-        activityService.deleteActivityById(id);
-    }
-
+	
+	
+	private final ActivityService activityService;
+	
+	public ActivityController(ActivityService activityService) {
+		this.activityService = activityService;
+	}
+	
+	@GetMapping
+	public List<ActivityResource> getActivities(@RequestParam(required = false) UUID babeeId, @RequestParam(required = false) LocalDate eventDate) {
+		return activityService.getActivities(babeeId, eventDate);
+	}
+	
+	
+	@GetMapping("/{id}")
+	public ActivityResource getActivityById(@PathVariable UUID id) {
+		return activityService.getActivityById(id);
+	}
+	
+	@PostMapping()
+	public ActivityResource saveActivity(@RequestBody @Validated ActivityInputResource activityInputResource) {
+		return activityService.saveActivity(activityInputResource);
+	}
+	
+	@PutMapping("/{id}")
+	public ActivityResource updateActivity(@PathVariable UUID id, @RequestBody @Validated ActivityInputResource activityInputResource) {
+		return activityService.updateActivity(id, activityInputResource);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteActivity(@PathVariable UUID id) {
+		activityService.deleteActivityById(id);
+	}
+	
 }

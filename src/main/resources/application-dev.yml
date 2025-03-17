@@ -1,0 +1,8 @@
+db:
+  url: jdbc:postgresql://localhost:5432/babee_database
+  username: admin
+  password: admin
+
+spring:
+  jpa:
+    show-sql: true
