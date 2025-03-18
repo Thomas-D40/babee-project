@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: ..
-      dockerfile: src/main/Dockerfile
+      dockerfile: deployment/Dockerfile
     ports:
       - "8080:8080"
     environment:
@@ -12,7 +12,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: postgres
@@ -23,6 +24,11 @@ services:
       POSTGRES_PASSWORD: admin
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d babee_database" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres-data:

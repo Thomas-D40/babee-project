@@ -3,13 +3,21 @@ FROM node:22 AS frontend-build
 WORKDIR /app/frontend
 COPY ./frontend/ .
 RUN npm install
-RUN npm run build --prod
+RUN npm run build:java
 
 # Étape 2 : Build Spring Boot
-FROM eclipse-temurin:21-jdk AS backend-build
+FROM openjdk:21-jdk AS backend-build
 WORKDIR /app
-COPY ./src/main/ .
+COPY ./mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+
+COPY --from=frontend-build /app/frontend/dist/ ./src/main/resources/static/
+
+RUN chmod +x ./mvnw && ./mvnw dependency:go-offline
 RUN ./mvnw clean package -DskipTests
+
 
 # Étape 3 : Image finale
 FROM eclipse-temurin:21-jre
