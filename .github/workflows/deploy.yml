@@ -1,0 +1,39 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Check out le code du repo
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Étape 2 : Copie des fichiers sur le VPS
+      - name: Copy files to VPS
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          echo "$VPS_SSH_KEY" | ssh-add - > /dev/null
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa Dockerfile docker-compose.yml src/ $VPS_USER@$VPS_IP:/home/$VPS_USER/app/
+
+      # Étape 3 : Déployer sur le VPS (build et lancer le conteneur)
+      - name: Deploy to VPS
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          echo "$VPS_SSH_KEY" | ssh-add - > /dev/null
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $VPS_USER@$VPS_IP << 'EOF'
+            cd /home/$VPS_USER/app
+            docker-compose build
+            docker-compose up -d
+          EOF

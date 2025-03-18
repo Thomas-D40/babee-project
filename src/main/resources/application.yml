@@ -19,7 +19,7 @@ spring:
     username: ${db.username}
     password: ${db.password}
     driverClassName: org.postgresql.Driver
-
+    
 file:
   upload-dir: src/main/resources/uploads
 
