@@ -110,7 +110,6 @@ export class FeedingComponent {
       });
     }
 
-    console.log('FormGroup updated:', group);
     return this.fb.group(group);
   }
 
@@ -133,7 +132,6 @@ export class FeedingComponent {
   }
 
   onMealFormSubmit() {
-    const informations: Map<string, string> = new Map([]);
     const mealInformations: string[] = [];
     const formValues = this.mealFormGroup().value;
     const isFormValid = this.mealFormGroup().valid;
@@ -163,10 +161,14 @@ export class FeedingComponent {
   // Bottle
   readonly bottleForm = new FormGroup({
     quantity: new FormControl('', [Validators.required]),
+    hour: new FormControl('08:00', Validators.required),
   });
 
   get quantity(): FormControl {
     return this.bottleForm.get('quantity') as FormControl;
+  }
+  get hour(): FormControl {
+    return this.bottleForm.get('hour') as FormControl;
   }
 
   onBottleFormSubmit() {
@@ -176,7 +178,9 @@ export class FeedingComponent {
       const feeding = {
         babeeId: this.babeeId,
         eventDate: new Date(),
-        feedingInformations: ['Biberon - ' + this.quantity.value],
+        feedingInformations: [
+          'Biberon - ' + this.quantity.value + ' à ' + this.hour.value,
+        ],
       };
 
       this.feedingService.createFeeding(feeding).subscribe(() => {
