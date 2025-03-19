@@ -60,6 +60,7 @@ export class ActivitiesComponent implements OnChanges {
 
   readonly form = new FormGroup({
     activityName: new FormControl('', [Validators.required]),
+    comment: new FormControl(''),
   });
 
   onSubmit() {
@@ -67,16 +68,18 @@ export class ActivitiesComponent implements OnChanges {
     const isFormValid = this.form.valid;
     const date = new Date();
     const activityName = this.form.get('activityName') as FormControl;
+    const comment = this.form.get('comment') as FormControl;
 
     if (isFormValid && babeeId) {
       const activity = {
         name: activityName.value,
         eventDate: date,
         babeeId: babeeId,
+        comment: comment.value,
       };
 
       this.activityService.createActivity(activity).subscribe(() => {
-        this.form.patchValue({ activityName: '' });
+        this.form.patchValue({ activityName: '', comment: '' });
         this.fetchActivities();
       });
     }
